@@ -1,0 +1,8 @@
+memory/
+vectorstore/
+.env
+chat_memory.json
+.chainlit/
+__pycache__/
+./learning-by-teaching-123-firebase-adminsdk-fbsvc-965ed2ef8e.json
+vectorstore.tar.gz
