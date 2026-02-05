@@ -75,9 +75,7 @@ def oauth_callback(
     default_user: cl.User,
 ) -> Optional[cl.User]:
     if provider_id == "google":
-        email = raw_user_data.get("email", "")
-        if email.endswith("@pilani.bits-pilani.ac.in"):
-            return default_user
+        return default_user
     return None
 
 # ------------------- ON SETTINGS UPDATE ------------------- #
