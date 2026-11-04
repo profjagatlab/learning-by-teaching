@@ -39,7 +39,13 @@ Respond ONLY in valid JSON that matches this schema:
 def build_student_chain(llm, topic: str, catalog: dict):
     """Return (LLM chain, vectorstore) for a given topic using catalog path."""
     # Embeddings
-    embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
+    # embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
+    embeddings = OpenAIEmbeddings(
+        model="openai/text-embedding-3-small",
+        base_url="https://openrouter.ai/api/v1",
+        api_key=os.getenv("OPENROUTER_API_KEY"),
+        check_embedding_ctx_length=False,
+    )
 
     # Get vectorstore path from catalog
     topic_info = catalog.get(topic)
