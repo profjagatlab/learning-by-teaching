@@ -63,7 +63,13 @@ def split_docs(docs, topic: str):
 
 
 def build_vectorstore(splits, topic: str, batch_size: int = 64):
-    embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
+    # embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
+    embeddings = OpenAIEmbeddings(
+        model="openai/text-embedding-3-small",
+        base_url="https://openrouter.ai/api/v1",
+        api_key=os.getenv("OPENROUTER_API_KEY"),
+        check_embedding_ctx_length=False,
+    )
     topic_vs_dir = VS_DIR / topic
 
     print(f"[ingest] Building vectorstore for topic={topic} at {topic_vs_dir}")
